@@ -11,6 +11,7 @@ export const SearchForm = ({ searchMovie }) => {
   const onSubmitHandler = e => {
     e.preventDefault();
     searchMovie(movieQuery);
+    setMovieQuery('');
   };
 
   return (

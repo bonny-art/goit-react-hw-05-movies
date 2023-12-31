@@ -10,15 +10,17 @@ const Reviews = () => {
 
   const { movieId } = useParams();
 
+  // TODO: Make Load more button
+
   useEffect(() => {
     setIsLoading(true);
     setError('');
     const getData = async () => {
       try {
         const resp = await getMovieReviews(movieId);
-        setError(
-          !resp.results ? `We don't have any reviews for this movie` : null
-        );
+        console.log('resp.results :>> ', resp.results.length);
+        !resp.results.length &&
+          setError(`We don't have any reviews for this movie`);
         setReviews(resp.results);
       } catch (error) {
         setError(error.message);
