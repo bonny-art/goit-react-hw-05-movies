@@ -1,11 +1,4 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import {
-  getMovieCredits,
-  getMovieDetails,
-  getMovieReviews,
-  getMoviesByQuery,
-  getTrendMovies,
-} from 'service/movies-service';
 
 import Home from 'pages/Home';
 import Movies from 'pages/Movies';
@@ -15,12 +8,6 @@ import Reviews from './Reviews/Reviews';
 import { Layout } from 'components';
 
 export const App = () => {
-  getTrendMovies();
-  // getMovieDetails('678512');
-  // getMovieCredits('678512');
-  // getMovieReviews('823482', 1);
-  // getMoviesByQuery('the lion king', 2);
-
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
