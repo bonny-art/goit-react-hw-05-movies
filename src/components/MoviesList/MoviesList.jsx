@@ -28,7 +28,7 @@ export const MoviesList = ({ movies }) => {
                 }
                 alt={title}
               />
-              <p>{vote_average}</p>
+              <p>User rating: {vote_average}</p>
             </Link>
           </li>
         );

@@ -2,10 +2,11 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 import logo from '../../images/logo.webp';
+import { HeaderStyled } from './Header.styled';
 
 export const Header = () => {
   return (
-    <header>
+    <HeaderStyled>
       <div>
         <img src={logo} alt="MovieMania logo" width={300} />
       </div>
@@ -17,6 +18,6 @@ export const Header = () => {
           <NavLink to="/movies">Movies</NavLink>
         </li>
       </ul>
-    </header>
+    </HeaderStyled>
   );
 };
