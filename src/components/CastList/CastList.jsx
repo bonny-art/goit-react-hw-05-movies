@@ -2,18 +2,24 @@ import React from 'react';
 
 import defaultImgMale from '../../images/absent-fhoto-male.jpg';
 import defaultImgFemale from '../../images/absent-fhoto-female.jpg';
+import {
+  ItemStyled,
+  ListStyled,
+  TextStyled,
+  TextWrapStyled,
+  TitleStyled,
+} from './CastList.styled';
 
 const BASE_IMG_URL = 'http://image.tmdb.org/t/p/';
 const PROFILE_SIZE = 'w185';
 
 export const CastList = ({ cast }) => {
   return (
-    <ul>
+    <ListStyled>
       {cast.map(({ id, name, profile_path, character, gender }) => {
         const defaultImg = gender === 1 ? defaultImgFemale : defaultImgMale;
         return (
-          <li key={id}>
-            <h2>{name}</h2>
+          <ItemStyled key={id}>
             <img
               src={
                 profile_path
@@ -22,10 +28,13 @@ export const CastList = ({ cast }) => {
               }
               alt={name}
             />
-            <p>{character}</p>
-          </li>
+            <TextWrapStyled>
+              <TitleStyled>{name}</TitleStyled>
+              {character && <TextStyled>Character: {character}</TextStyled>}
+            </TextWrapStyled>
+          </ItemStyled>
         );
       })}
-    </ul>
+    </ListStyled>
   );
 };

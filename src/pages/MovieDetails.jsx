@@ -1,4 +1,5 @@
 import { Loader, Message, MovieInfo } from 'components';
+import { ContainerStyled, SectionStyled } from 'components/App/App.styled';
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from 'service/movies-service';
@@ -26,14 +27,18 @@ const MovieDetails = () => {
     getData();
   }, [movieId]);
 
+  useEffect(() => {
+    if (!movieId) return;
+  }, [movieId]);
+
   return (
-    <section>
-      <div>
+    <SectionStyled>
+      <ContainerStyled>
         {isLoading && <Loader />}
         {error && <Message>{error}</Message>}
         <MovieInfo movie={movie} />
-      </div>
-    </section>
+      </ContainerStyled>
+    </SectionStyled>
   );
 };
 

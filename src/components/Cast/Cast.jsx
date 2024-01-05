@@ -18,7 +18,7 @@ const Cast = () => {
     const getData = async () => {
       try {
         const resp = await getMovieCredits(movieId);
-        console.log('resp :>> ', resp);
+
         !resp.length &&
           setError(`We don't have information about cast for this movie`);
         setCast(resp);
@@ -30,6 +30,10 @@ const Cast = () => {
     };
 
     getData();
+  }, [movieId]);
+
+  useEffect(() => {
+    if (!movieId) return;
   }, [movieId]);
 
   return (

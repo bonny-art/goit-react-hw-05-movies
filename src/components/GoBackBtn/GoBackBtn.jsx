@@ -1,6 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { LinkStyled } from './GoBackBtn.styled';
 
 export const GoBackBtn = ({ path, children }) => {
-  return <Link to={path}>{children}</Link>;
+  return <LinkStyled to={path}>{children}</LinkStyled>;
 };

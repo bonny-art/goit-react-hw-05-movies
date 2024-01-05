@@ -1,9 +1,20 @@
-import { GoBackBtn } from 'components';
 import React, { useRef } from 'react';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
+import { GoBackBtn } from 'components';
 import defaultImg01 from '../../images/absent-poster-w342-01.jpg';
 import defaultImg02 from '../../images/absent-poster-w342-02.jpg';
+import {
+  Container,
+  HeaderStyled,
+  LinkStyled,
+  ListStyled,
+  ScoreStyled,
+  SubtitleStyled,
+  TextStyled,
+  Title,
+  Wrapper,
+} from './MovieInfo.styled';
 
 const BASE_IMG_URL = 'http://image.tmdb.org/t/p/';
 const POSTER_SIZE = 'w342';
@@ -19,9 +30,7 @@ export const MovieInfo = ({
   },
 }) => {
   const location = useLocation();
-  console.log('location :>> ', location);
-  const goBack = useRef(location?.state?.from || '/');
-  console.log('goBack :>> ', goBack);
+  const goBack = useRef(location?.state?.from ?? '/');
 
   const defaultImg =
     Math.floor(Math.random() * 10) + 1 > 5 ? defaultImg01 : defaultImg02;
@@ -29,7 +38,7 @@ export const MovieInfo = ({
   return (
     <>
       <GoBackBtn path={goBack.current}>Go back</GoBackBtn>
-      <div>
+      <Container>
         <div>
           <img
             src={
@@ -40,31 +49,31 @@ export const MovieInfo = ({
             alt={title}
           />
         </div>
-        <div>
-          <h1>
-            {title} ({release_date})
-          </h1>
-          <p>User score: {vote_average}</p>
+        <Wrapper>
+          <Title>
+            {title} ({release_date?.slice(0, 4)})
+          </Title>
+          <ScoreStyled>User score: {vote_average}</ScoreStyled>
           <div>
-            <h2>Overview:</h2>
-            <p>{overview}</p>
+            <SubtitleStyled>Overview:</SubtitleStyled>
+            <TextStyled>{overview}</TextStyled>
           </div>
           <div>
-            <h2>Genres:</h2>
-            <p>{genres.map(genre => genre).join(', ')}</p>
+            <SubtitleStyled>Genres:</SubtitleStyled>
+            <TextStyled>{genres.map(genre => genre).join(', ')}</TextStyled>
           </div>
-        </div>
-      </div>
+        </Wrapper>
+      </Container>
       <div>
-        <h3>Aditional information</h3>
-        <ul>
+        <HeaderStyled>Aditional information</HeaderStyled>
+        <ListStyled>
           <li>
-            <Link to="cast">Cast</Link>
+            <LinkStyled to="cast">Cast</LinkStyled>
           </li>
           <li>
-            <Link to="reviews">Reviews</Link>
+            <LinkStyled to="reviews">Reviews</LinkStyled>
           </li>
-        </ul>
+        </ListStyled>
         <Outlet />
       </div>
     </>

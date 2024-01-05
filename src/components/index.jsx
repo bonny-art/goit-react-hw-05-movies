@@ -9,3 +9,4 @@ export * from 'components/CastList/CastList';
 export * from 'components/ReviewsList/ReviewsList';
 export * from 'components/SearchForm/SearchForm';
 export * from 'components/Button/Button';
+export * from 'components/ScrollToTopBtn/ScrollToTopBtn';

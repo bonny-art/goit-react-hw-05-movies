@@ -1,15 +1,22 @@
 import React from 'react';
+import {
+  Itemtyled,
+  ListStyled,
+  RatingStyled,
+  TextStyled,
+  TitleStyled,
+} from './ReviewsList.styled';
 
 export const ReviewsList = ({ reviews }) => {
   return (
-    <ul>
+    <ListStyled>
       {reviews.map(({ id, author, rating, content }) => (
-        <li key={id}>
-          <h2>{author}</h2>
-          <p>Author rating: {rating}</p>
-          <p>{content}</p>
-        </li>
+        <Itemtyled key={id}>
+          <TitleStyled>{author}</TitleStyled>
+          <RatingStyled>Author rating: {rating}</RatingStyled>
+          <TextStyled>{content}</TextStyled>
+        </Itemtyled>
       ))}
-    </ul>
+    </ListStyled>
   );
 };

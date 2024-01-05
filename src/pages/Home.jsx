@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
+import { ContainerStyled, SectionStyled } from 'components/App/App.styled';
 import { Loader, Message, MoviesList } from 'components';
 
 import { getTrendMovies } from 'service/movies-service';
@@ -27,14 +28,16 @@ const Home = () => {
     getData();
   }, []);
 
+  //TODO Make & style loader
+
   return (
-    <section>
-      <div>
+    <SectionStyled>
+      <ContainerStyled>
         {isLoading && <Loader />}
         {error && <Message>{error}</Message>}
         <MoviesList movies={movies} />
-      </div>
-    </section>
+      </ContainerStyled>
+    </SectionStyled>
   );
 };
 

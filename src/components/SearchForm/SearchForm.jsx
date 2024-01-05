@@ -1,32 +1,34 @@
 import React, { useState } from 'react';
 import { FiSearch } from 'react-icons/fi';
+import { BtnStyled, FormStyled, InputStyled } from './SearchForm.styled';
 
 export const SearchForm = ({ searchMovie }) => {
   const [movieQuery, setMovieQuery] = useState('');
 
-  const onChangeHandler = e => {
+  const handleChange = e => {
     setMovieQuery(e.target.value);
   };
 
-  const onSubmitHandler = e => {
+  const handleSubmit = e => {
     e.preventDefault();
     searchMovie(movieQuery);
+
     setMovieQuery('');
   };
 
   return (
-    <form onSubmit={onSubmitHandler}>
-      <input
+    <FormStyled onSubmit={handleSubmit}>
+      <InputStyled
         type="text"
         name="movie"
         required
         placeholder="Enter movie title here"
-        onChange={onChangeHandler}
+        onChange={handleChange}
         value={movieQuery}
       />
-      <button type="submit">
+      <BtnStyled type="submit">
         <FiSearch size="16px" />
-      </button>
-    </form>
+      </BtnStyled>
+    </FormStyled>
   );
 };

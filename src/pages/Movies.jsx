@@ -1,4 +1,9 @@
 import { Button, Loader, Message, MoviesList, SearchForm } from 'components';
+import {
+  ButtonsContainer,
+  ContainerStyled,
+  SectionStyled,
+} from 'components/App/App.styled';
 import React, { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { getMoviesByQuery } from 'service/movies-service';
@@ -58,26 +63,36 @@ const Movies = () => {
   };
 
   return (
-    <section>
-      <div>
+    <SectionStyled>
+      <ContainerStyled>
         {isLoading && <Loader />}
         <SearchForm searchMovie={searchHandler} />
         {error && <Message>{error}</Message>}
         {searchQuery.get('query') && (
           <>
-            <MoviesList movies={movies} />
-            <div>
+            <ButtonsContainer>
               {isPreviousButtonVisible && (
                 <Button onClick={() => loadPage(-1)}>Previous page</Button>
               )}
+              <div></div>
               {isNextButtonVisible && (
                 <Button onClick={() => loadPage(1)}>Next page</Button>
               )}
-            </div>
+            </ButtonsContainer>
+            {!isLoading && <MoviesList movies={movies} />}
+            <ButtonsContainer>
+              {isPreviousButtonVisible && (
+                <Button onClick={() => loadPage(-1)}>Previous page</Button>
+              )}
+              <div></div>
+              {isNextButtonVisible && (
+                <Button onClick={() => loadPage(1)}>Next page</Button>
+              )}
+            </ButtonsContainer>
           </>
         )}
-      </div>
-    </section>
+      </ContainerStyled>
+    </SectionStyled>
   );
 };
 

@@ -2,20 +2,36 @@ import { css } from '@emotion/react';
 import { theme } from 'styles/theme';
 
 export const GlobalStyles = css`
+  @font-face {
+    font-family: KyivTypeSerif-Regular;
+    src: url(../../public/fonts/KyivTypeSerif-Regular.woff2);
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: KyivTypeSerif-Medium;
+    src: url(../../public/fonts/KyivTypeSerif-Medium.woff2);
+    font-weight: 500;
+  }
+
   html {
     box-sizing: border-box;
     scroll-behavior: smooth;
+    font-family: KyivTypeSerif-Regular, sans-serif;
   }
 
   * {
     margin: 0;
+    box-sizing: border-box;
+  }
+
+  *::selection {
+    background-color: ${theme.colors.lightText};
+    color: ${theme.colors.white};
   }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-      'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
-      'Helvetica Neue', sans-serif;
-    background: ${theme.colors.dark};
+    background: ${theme.colors.background};
     min-height: 100vh;
 
     font-style: normal;
@@ -50,7 +66,7 @@ export const GlobalStyles = css`
 
   a {
     text-decoration: none;
-    color: inherit;
+    color: currentColor;
   }
 
   img {
