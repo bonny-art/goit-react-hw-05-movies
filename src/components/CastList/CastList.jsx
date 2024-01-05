@@ -2,6 +2,7 @@ import React from 'react';
 
 import defaultImgMale from '../../images/absent-fhoto-male.jpg';
 import defaultImgFemale from '../../images/absent-fhoto-female.jpg';
+import defaultImgNeutral from '../../images/absent-fhoto-neutral.jpg';
 import {
   ItemStyled,
   ListStyled,
@@ -17,7 +18,13 @@ export const CastList = ({ cast }) => {
   return (
     <ListStyled>
       {cast.map(({ id, name, profile_path, character, gender }) => {
-        const defaultImg = gender === 1 ? defaultImgFemale : defaultImgMale;
+        const defaultImg =
+          gender === 1
+            ? defaultImgFemale
+            : gender === 2
+            ? defaultImgMale
+            : defaultImgNeutral;
+        console.log('defaultImg :>> ', defaultImg);
         return (
           <ItemStyled key={id}>
             <img
