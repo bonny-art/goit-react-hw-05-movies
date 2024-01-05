@@ -21,13 +21,13 @@ const Reviews = () => {
       try {
         const resp = await getMovieReviews(movieId, page);
 
-        // setReviews(r => {
-        //   console.log('r :>> ', r);
-        //   console.log('resp.results :>> ', resp.results);
-        //   return [...r, ...resp.results];
-        // });
+        setReviews(r => {
+          console.log('r :>> ', r);
+          console.log('resp.results :>> ', resp.results);
+          return [...r, ...resp.results];
+        });
 
-        setReviews(resp.results);
+        // setReviews(resp.results);
 
         setIsLoadMoreButtonVisible(page < resp.total_pages);
 
